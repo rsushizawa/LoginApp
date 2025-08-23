@@ -23,6 +23,14 @@ public class User {
         this.password_hash = new_password_hash;
     }
 
+    public String getUsername(){
+        return this.username;
+    }
+
+    public String getPassword_hash(){
+        return this.password_hash;
+    }
+
     @Override
     public String toString() {
         return "User{" +
