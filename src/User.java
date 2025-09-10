@@ -1,5 +1,3 @@
-import java.sql.Connection;
-
 public class User {
 
     private int id;
@@ -29,6 +27,14 @@ public class User {
 
     public String getPassword(){
         return this.password;
+    }
+
+    public void setUsername(String new_username){
+        username = new_username;
+    }
+
+    public void setPassword(String new_password){
+        password = new_password;
     }
 
     @Override

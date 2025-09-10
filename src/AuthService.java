@@ -13,11 +13,12 @@ public class AuthService {
 
     public boolean register(String username, String password) {
         String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        User user = new User(username,password);
 
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
+            pstmt.setString(1, user.getUsername());
+            pstmt.setString(2, user.getPassword());
             int rowsAffected = pstmt.executeUpdate();
 
             if (rowsAffected > 0) {
@@ -31,7 +32,7 @@ public class AuthService {
 
     public Optional<User> login(String username, String password) {
         String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-        Optional<User> user = Optional.empty();
+        Optional<User> user;
 
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
